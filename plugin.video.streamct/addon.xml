@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon 
+   id="plugin.video.streamct"
+   name="CT24 Stream"
+   version="0.1"
+   provider-name="jirka642">
+  <requires>
+    <import addon="xbmc.python"     version="2.1.0" />
+    <import addon="xbmc.json"       version="6.0.0" />
+    <import addon="xbmc.addon"      version="12.0.0"/>
+    <import addon="script.module.beautifulsoup" />
+    <import addon="script.module.requests" />
+  </requires>
+  <extension point="xbmc.python.script" library="default.py">
+    <provides>executable video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Your add-on's summary</summary>
+    <description lang="en">Your add-on's description</description>
+    <language />
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+    <email>jirka642@gmail.com</email>
+    <source></source>
+  </extension>
+</addon>
