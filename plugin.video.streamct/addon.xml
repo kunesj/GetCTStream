@@ -2,7 +2,7 @@
 <addon 
    id="plugin.video.streamct"
    name="CT24 Stream"
-   version="0.1"
+   version="0.1.1"
    provider-name="jirka642">
   <requires>
     <import addon="xbmc.python"     version="2.1.0" />
