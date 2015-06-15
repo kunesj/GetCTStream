@@ -12,7 +12,7 @@ Instalace
 
 Pokud instalace selže:
 - Zkus restartovat Kodi
-- Může také požebovat připojení k internetu
+- Může také potřebovat připojení k internetu
 
 Někdy mohou upgrady pluginu potřebovat vyčistit cache: (resetuje nastaveni)
 - Windows: smaž %APPDATA%\kodi\userdata
