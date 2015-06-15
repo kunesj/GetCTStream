@@ -8,8 +8,6 @@ from requests import Session
 from BeautifulSoup import BeautifulSoup
 import json
 
-import xbmc
-
 class GetCtStream():
     """
     1. get url with streams: stream_url = getChannelStream("ct24");
@@ -125,16 +123,12 @@ class GetCtStream():
         for l in data.split("\n"):
             if l.startswith("http"):
                 urls.append(l)
-        
+                
         # return first stream url (lowest quality)
         print "filtered_stream_url:", urls[0]
         return urls[0]
 
 
 if __name__ == '__main__':
-    print "Starting GET-CT-STREAM script"
     cts = GetCtStream()
-    fs = cts.selectStreamQuality(cts.getChannelStream("ct24"))
-    
-    xbmc.Player().play(fs)
-    
+    cts.selectStreamQuality(cts.getChannelStream("ct24"))
