@@ -1,7 +1,8 @@
 
 help:
-	@echo "To run raw script run: make run"
-	@echo "To build Kodi plugin run: make build_kodi"
+	@echo "To run raw script: \n\tmake run"
+	@echo "To build Kodi plugin: \n\tmake build_kodi"
+	@echo "To clean: \n\tmake clean"
 	
 run:
 	python2 get_ct_stream.py
