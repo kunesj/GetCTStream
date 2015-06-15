@@ -1,15 +1,20 @@
 
 help:
+	@echo "To run raw script run: make run"
 	@echo "To build Kodi plugin run: make build_kodi"
 	
 run:
 	python2 get_ct_stream.py
 
 build_kodi: prepare_to_build
+	rm -f dist/*kodi.zip
+	
 	cp -r Kodi/plugin.video.streamct build/
-	cp -r get_ct_stream.py build/plugin.video.streamct
-	rm -f dist/kodi_plugin.video.streamct.zip
-	cd build; zip -r ../dist/kodi_plugin.video.streamct.zip plugin.video.streamct 
+	cp Kodi/KODI_README.md build/
+	cp get_ct_stream.py build/plugin.video.streamct
+	
+	cd build; zip -r plugin.video.streamct.zip plugin.video.streamct
+	cd build; zip -r ../dist/get_ct_stream_kodi.zip plugin.video.streamct.zip KODI_README.md
 
 prepare_to_build:
 	rm -rf build

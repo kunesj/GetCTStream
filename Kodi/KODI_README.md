@@ -7,7 +7,7 @@ Kodi plugin pro streamovaní živého vysíláni programu ČT24.
 Instalace
 ---------
 
-1. Stáhni si archiv kodi_plugin.video.streamct.zip (nebo ho vytvoř, viz. Build)
+1. Stáhni si archiv který má v sobě zazipovaný plugin.video.streamct.zip
 2. Zapni Kodi a v nastavení pod Add-ons zvol nainstalovat Add-on z archivu
 
 Pokud instalace selže:
@@ -17,11 +17,3 @@ Pokud instalace selže:
 Někdy mohou upgrady pluginu potřebovat vyčistit cache: (resetuje nastaveni)
 - Windows: smaž %APPDATA%\kodi\userdata
 - Linux: smaž ~/.kodi/userdata/
-
-Build (Linux)
--------------
-Z kořenového adresáře spusť:
-
-    make build_kodi
-
-Výsledný archiv je ve složce dist
