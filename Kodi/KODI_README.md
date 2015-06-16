@@ -7,7 +7,7 @@ Kodi plugin pro streamovaní živého vysíláni programů České Televize.
 Instalace
 ---------
 
-1. Stáhni si archiv get_ct_stream_kodi.zip s extrahuj z něho plugin.video.streamct.zip
+1. Stáhni si archiv [get_ct_stream_kodi.zip](https://github.com/kunesj/GetCTStream/releases) a extrahuj z něho plugin.video.streamct.zip
 2. Zapni Kodi a v nastavení pod Add-ons zvol nainstalovat Add-on z archivu a zadej plugin.video.streamct.zip
 
 Pokud instalace selže:
