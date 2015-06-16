@@ -7,6 +7,10 @@ help:
 run:
 	python2 get_ct_stream.py
 
+install_run_dep_debian:
+	sudo apt-get install python python-pip
+	sudo pip install requests beautifulsoup4
+
 build_kodi: prepare_to_build
 	rm -f dist/*kodi.zip
 	
