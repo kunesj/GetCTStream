@@ -20,7 +20,7 @@ def ChannelName(v):
     ChannelName DataType
     Použité pro kontrolu povolených hodnot prametru --kanal
     """
-    channels = ['ct1','ct2','ct24']
+    channels = ['ct1','ct2','ct24','ctsport','ctd','ctart']
     if v not in channels:
         raise argparse.ArgumentTypeError("Povolené názvy kanálu jsou pouze "+",".join(channels))
     else:
@@ -36,6 +36,9 @@ class GetCtStream():
     url_ct24 = "http://www.ceskatelevize.cz/ct24/zive-vysilani/"
     url_ct1 = url_ct24
     url_ct2 = url_ct24
+    url_ctsport = "http://www.ceskatelevize.cz/sport/zive-vysilani/"
+    url_ctd = url_ct24
+    url_ctart = url_ct24
     
     def getFlashPlayerUrl(self, url=None):
         if url is None:
@@ -106,22 +109,35 @@ class GetCtStream():
     def getChannelStream(self, channel):
         """
         channel values:
-            ct1, ct2, ct24
+            ct1, ct2, ct24, ctsport, ctd, ctart
         """
         logger.info("getting stream for channel - "+channel)
         
         url = ""
         playlist_id = ""
+        # confirmed working playlist ids:
+        # 1-6, 24
         
         if channel == "ct1":
             url = self.url_ct1
-            playlist_id = "1" 
+            playlist_id = "1" #TODO - test jestli nekdy skonci prestavka
         elif channel == "ct2":
             url = self.url_ct2
             playlist_id = "2" 
+        elif channel == "ctsport":
+            # Občas může mít přestávku
+            url = self.url_ctsport
+            playlist_id = "4" 
+        elif channel == "ctd":
+            url = self.url_ctd
+            playlist_id = "5"
+        elif channel == "ctart":
+            url = self.url_ctart
+            playlist_id = "6" #TODO - test jestli nekdy skonci prestavka
         else: # channel == "ct24"
             url = self.url_ct24
-            playlist_id = "24"
+            playlist_id = "24" 
+            # playlist_id = "3" also works
         
         flashplayer_url = self.getFlashPlayerUrl(url)
         playlist_url = self.getPlaylistUrl(
