@@ -1,7 +1,7 @@
 GetCTStream
 ===========
 
-Python script pro parasovani streamu živého vysíláni programů České Televize.
+Python script pro získání streamů živého vysíláni programů České Televize. Také obsahuje plugin do přehrávače Kodi.
 
 Příklady použití:
 

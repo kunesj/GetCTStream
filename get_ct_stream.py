@@ -119,8 +119,9 @@ class GetCtStream():
         # 1-6, 24
         
         if channel == "ct1":
+            # často může mít přestávku (programy co nemůžou dát do iVysílání)
             url = self.url_ct1
-            playlist_id = "1" #TODO - test jestli nekdy skonci prestavka
+            playlist_id = "1" 
         elif channel == "ct2":
             url = self.url_ct2
             playlist_id = "2" 

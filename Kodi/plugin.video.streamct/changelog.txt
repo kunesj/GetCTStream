@@ -1,3 +1,7 @@
+[B]v0.2[/B]
+- CT1, CT2, CTSport, CTArt, CT:D
+- GUI
+
 [B]v0.1.1[/B]
 - added proper fanart.jpg and icon.png
 

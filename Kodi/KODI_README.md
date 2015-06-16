@@ -1,14 +1,14 @@
 plugin.video.streamct
 =====================
-!Zatím nefunguje na Androidu!
-
 Kodi plugin pro streamovaní živého vysíláni programů České Televize.
+
+!Zatím nefunguje na Androidu!
 
 Instalace
 ---------
 
-1. Stáhni si archiv který má v sobě zazipovaný plugin.video.streamct.zip
-2. Zapni Kodi a v nastavení pod Add-ons zvol nainstalovat Add-on z archivu
+1. Stáhni si archiv get_ct_stream_kodi.zip s extrahuj z něho plugin.video.streamct.zip
+2. Zapni Kodi a v nastavení pod Add-ons zvol nainstalovat Add-on z archivu a zadej plugin.video.streamct.zip
 
 Pokud instalace selže:
 - Zkus restartovat Kodi
