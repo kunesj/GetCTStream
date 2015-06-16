@@ -198,7 +198,7 @@ if __name__ == '__main__':
         action='store_true',
         help='Otevři stream v přehrávači vlc')
     parser.add_argument(
-        '--customplayer',
+        '--playerpath',
         default=None,
         help='Otevři stream ve zvoleném přehrávači.')
     args = parser.parse_args()
@@ -221,8 +221,8 @@ if __name__ == '__main__':
         print "Stream url: "+stream_url
         print "Selected stream quality url: "+lq_stream_url
     
-    if args.customplayer is not None:
-        subprocess.call([args.customplayer, lq_stream_url])
+    if args.playerpath is not None:
+        subprocess.call([args.playerpath, lq_stream_url])
     elif args.mpv:
         subprocess.call(["mpv", lq_stream_url])
     elif args.mplayer:

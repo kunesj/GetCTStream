@@ -5,7 +5,7 @@ help:
 	@echo "To clean: \n\tmake clean"
 	
 run:
-	python2 get_ct_stream.py
+	python get_ct_stream.py
 
 install_run_dep_debian:
 	sudo apt-get install python python-pip

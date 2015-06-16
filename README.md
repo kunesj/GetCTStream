@@ -7,7 +7,7 @@ Příklady použití:
 
     python get_ct_stream.py --kanal ct1 # vypíše adresy streamů pro kanál ČT1
     python get_ct_stream.py --mpv # automaticky otevře získaný stream ČT24 v přehrávači mpv 
-    python get_ct_stream.py --customplayer /usr/bin/cvlc # automaticky otevře získaný stream ČT1 v přehrávači cvlc
+    python get_ct_stream.py --playerpath /usr/bin/cvlc # automaticky otevře získaný stream ČT24 v přehrávači cvlc
 
 Informace o dalších parametrech příkazové řádky:
 
