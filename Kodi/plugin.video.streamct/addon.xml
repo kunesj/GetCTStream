@@ -15,8 +15,8 @@
     <provides>executable video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>Kodi plugin pro streamovaní živého vysíláni programu ČT24.</summary>
-    <description>Kodi plugin pro streamovaní živého vysíláni programu ČT24.</description>
+    <summary>Kodi plugin pro streamovaní živého vysíláni programů České Televize.</summary>
+    <description>Kodi plugin pro streamovaní živého vysíláni programů České Televize.</description>
     <platform>all</platform>
     <license>GPL v2.0</license>
     <email>jirka642@gmail.com</email>

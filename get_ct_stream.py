@@ -32,9 +32,10 @@ class GetCtStream():
     2. select stream quality: filtered_stream_url = selectStreamQuality(stream_url);
     3. put url to videoView: filtered_stream_url
     """    
-    url_ct1 = "" # TODO 
-    url_ct2 = "" # TODO 
+
     url_ct24 = "http://www.ceskatelevize.cz/ct24/zive-vysilani/"
+    url_ct1 = url_ct24
+    url_ct2 = url_ct24
     
     def getFlashPlayerUrl(self, url=None):
         if url is None:
@@ -114,10 +115,10 @@ class GetCtStream():
         
         if channel == "ct1":
             url = self.url_ct1
-            playlist_id = "1" # TODO check this
+            playlist_id = "1" 
         elif channel == "ct2":
             url = self.url_ct2
-            playlist_id = "2" # TODO check this
+            playlist_id = "2" 
         else: # channel == "ct24"
             url = self.url_ct24
             playlist_id = "24"

@@ -1,13 +1,13 @@
 GetCTStream
 ===========
 
-Python script pro parasovani streamu živého vysíláni programu ČT24.
+Python script pro parasovani streamu živého vysíláni programů České Televize.
 
 Příklady použití:
 
-    python get_ct_stream.py --kanal ct24 # vypíše adresy streamů pro kanál ČT24
-    python get_ct_stream.py --mpv # automaticky otevře získaný stream v přehrávači mpv 
-    python get_ct_stream.py --customplayer /usr/bin/cvlc # automaticky otevře získaný stream v přehrávači cvlc
+    python get_ct_stream.py --kanal ct1 # vypíše adresy streamů pro kanál ČT1
+    python get_ct_stream.py --mpv # automaticky otevře získaný stream ČT24 v přehrávači mpv 
+    python get_ct_stream.py --customplayer /usr/bin/cvlc # automaticky otevře získaný stream ČT1 v přehrávači cvlc
 
 Informace o dalších parametrech příkazové řádky:
 

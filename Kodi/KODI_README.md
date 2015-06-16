@@ -2,7 +2,7 @@ plugin.video.streamct
 =====================
 !Zatím nefunguje na Androidu!
 
-Kodi plugin pro streamovaní živého vysíláni programu ČT24.
+Kodi plugin pro streamovaní živého vysíláni programů České Televize.
 
 Instalace
 ---------
