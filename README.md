@@ -1,19 +1,25 @@
-plugin.video.streamct
-=====================
-!Zatím nefunguje na Androidu!
+GetCTStream
+===========
 
-Kodi plugin pro streamovaní živého vysíláni programu ČT24.
+Python script pro parasovani streamu živého vysíláni programu ČT24.
 
-Instalace
----------
+Instalace/Spuštění
+------------------
+Potřebuje nainstalované Python balíky BeautifulSoup a requests
 
-1. Stáhni si nebo zazipuj plugin.video.streamct
-2. Zapni Kodi a v nastavení pod Add-ons zvol nainstalovat Add-on z archivu
+1. Samostatný skript lze spustit pomocí
 
-Pokud instalace selže:
-- Zkus restartovat Kodi
-- Může také potřebovat připojení k internetu
+    python2 get_ct_stream.py
 
-Někdy mohou upgrady pluginu potřebovat vyčistit cache: (resetuje nastaveni)
-- Windows: smaž %APPDATA%\kodi\userdata
-- Linux: smaž ~/.kodi/userdata/
+2. Kodi plugin
+
+    Přečti si [Kodi/KODI_README.md](https://github.com/kunesj/kodi-plugin.video.streamct/blob/master/Kodi/KODI_README.md)
+
+Build
+-----
+Výsledné archivy jsou vždy ve složce dist
+
+1. Kodi plugin
+
+    make build_kodi
+
