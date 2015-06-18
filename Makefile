@@ -1,3 +1,4 @@
+VERSION=$(shell python -c "import getctstream; print getctstream.__version__")
 
 help:
 	@echo "To run raw script: \n\tmake run"
@@ -21,6 +22,9 @@ build_kodi: clean
 	cp -r Kodi/plugin.video.streamct build/
 	cp Kodi/KODI_README.md build/
 	cp getctstream/get_ct_stream.py build/plugin.video.streamct
+	
+	sed -i -e 's/__VERSION__/$(VERSION)/g' build/plugin.video.streamct/addon.xml
+	
 	cd build; zip -r plugin.video.streamct.zip plugin.video.streamct
 	cd build; zip -r ../get_ct_stream_kodi.zip plugin.video.streamct.zip KODI_README.md
 
