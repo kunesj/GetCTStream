@@ -8,7 +8,12 @@ Příklady použití:
     getctstream --kanal ct1 # vypíše adresy streamů pro kanál ČT1
     getctstream --mpv # automaticky otevře získaný stream ČT24 v přehrávači mpv 
     getctstream --playerpath /usr/bin/cvlc # automaticky otevře získaný stream ČT24 v přehrávači cvlc
+    getctstream -k ctsport --mpv --qualityid -1 # automaticky otevře získaný stream ČT Sport s nejvyssí kvalitou v přehrávači mpv 
 
+Pro výpis možných kanálů:
+
+    getctstream --kanal help
+    
 Informace o dalších parametrech příkazové řádky:
 
     getctstream --help

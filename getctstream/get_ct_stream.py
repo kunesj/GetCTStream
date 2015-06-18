@@ -150,7 +150,7 @@ class GetCtStream():
         
         return stream_url
     
-    def selectStreamQuality(self, stream_url):
+    def selectStreamQuality(self, stream_url, qualityid=1):
         r = requests.get(stream_url, timeout=30)
         data = unicode(r.text)
         
@@ -159,10 +159,20 @@ class GetCtStream():
         for l in data.split("\n"):
             if l.startswith("http"):
                 urls.append(l)
-                
+        
+        # fix qualityid
+        logger.info("qualityid to use: "+str(qualityid))
+        if qualityid>=len(urls):
+            qualityid = len(urls)
+        if qualityid<0:
+            qualityid = -1
+        logger.info("using qualityid: "+str(qualityid))
+        
+        selected_url = urls[qualityid]
+        
         # return first stream url (lowest quality)
-        logger.info("filtered_stream_url - "+urls[0])
-        return urls[0]
+        logger.info("filtered_stream_url - "+selected_url)
+        return selected_url
 
 
 def main():
@@ -186,6 +196,11 @@ def main():
         '--disableprint',
         action='store_true',
         help='Zamezí vypisování získaných streamů')
+    parser.add_argument(
+        '--qualityid',
+        type=int,
+        default=1,
+        help='Použije stream qualitou zadaneho cisla. Default je 1 = druhá nejnizsi kvalita')
     parser.add_argument(
         '--mpv',
         action='store_true',
@@ -215,21 +230,21 @@ def main():
 
     gcts = GetCtStream()
     stream_url = gcts.getChannelStream(args.kanal)
-    lq_stream_url = gcts.selectStreamQuality(stream_url)
+    stream_url_quality = gcts.selectStreamQuality(stream_url, qualityid=args.qualityid)
     
     if not args.disableprint:
         print "Kanal: "+args.kanal
         print "Stream url: "+stream_url
-        print "Selected stream quality url: "+lq_stream_url
+        print "Selected stream quality url: "+stream_url_quality
     
     if args.playerpath is not None:
-        subprocess.call([args.playerpath, lq_stream_url])
+        subprocess.call([args.playerpath, stream_url_quality])
     elif args.mpv:
-        subprocess.call(["mpv", lq_stream_url])
+        subprocess.call(["mpv", stream_url_quality])
     elif args.mplayer:
-        subprocess.call(["mplayer", lq_stream_url])
+        subprocess.call(["mplayer", stream_url_quality])
     elif args.vlc:
-        subprocess.call(["vlc", lq_stream_url])
+        subprocess.call(["vlc", stream_url_quality])
         
 if __name__ == '__main__':
     main()

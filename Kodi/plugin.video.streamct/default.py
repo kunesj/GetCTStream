@@ -131,7 +131,7 @@ class MyClass(xbmcgui.WindowDialog):
             try:
                 gcts = GetCtStream()
                 chs = gcts.getChannelStream(channel)
-                lq_chs = gcts.selectStreamQuality(chs)
+                lq_chs = gcts.selectStreamQuality(chs, qualityid=0) # lowest quality
                 xbmc.Player().play(lq_chs)
                 self.close()
             except Exception, e:
