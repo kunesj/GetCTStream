@@ -165,7 +165,7 @@ class GetCtStream():
         return urls[0]
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(
         description='GetCTStream'
     )
@@ -230,3 +230,6 @@ if __name__ == '__main__':
         subprocess.call(["mplayer", lq_stream_url])
     elif args.vlc:
         subprocess.call(["vlc", lq_stream_url])
+        
+if __name__ == '__main__':
+    main()

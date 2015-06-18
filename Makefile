@@ -7,23 +7,22 @@ help:
 run:
 	python get_ct_stream.py
 
-install_run_dep_debian:
+install: clean
+	sudo python setup.py build install
+
+install_dep_debian:
 	sudo apt-get install python python-pip
 	sudo pip install requests beautifulsoup4
 
-build_kodi: prepare_to_build
-	rm -f dist/*kodi.zip
+build_kodi: clean
+	rm -f *kodi.zip
+	mkdir -p build/plugin.video.streamct
 	
 	cp -r Kodi/plugin.video.streamct build/
 	cp Kodi/KODI_README.md build/
-	cp get_ct_stream.py build/plugin.video.streamct
-	
+	cp getctstream/get_ct_stream.py build/plugin.video.streamct
 	cd build; zip -r plugin.video.streamct.zip plugin.video.streamct
-	cd build; zip -r ../dist/get_ct_stream_kodi.zip plugin.video.streamct.zip KODI_README.md
-
-prepare_to_build:
-	rm -rf build
-	mkdir -p build dist
+	cd build; zip -r ../get_ct_stream_kodi.zip plugin.video.streamct.zip KODI_README.md
 
 clean:
-	rm -rf dist build
+	sudo rm -rf build dist getctstream.egg-info
