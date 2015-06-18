@@ -35,7 +35,7 @@ Potřebuje nainstalované Python2 a Python balíky BeautifulSoup a requests
 
 2. Alternativně je možné po ruční installaci potřebných balíků spustit samostatný skript pomocí:
 
-    python get_ct_stream.py
+    python -m getctstream
 
 3. Kodi plugin
 
