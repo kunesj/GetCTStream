@@ -27,21 +27,23 @@ Potřebuje nainstalované Python2 a Python balíky BeautifulSoup a requests
 1. Instalace Python balíku (Linux)
 
     Automatická instalace potřebných knihoven atd.. (Pouze Debian)
-    
+    ```
     make install_dep_debian
-
+    ```
     Installace aplikace:
-
+    ```
     make install
-    
+    ```
     Nyní může skript spuštěn přímo z příkazové řádky:
-    
+    ```
     getctstream
+    ```
 
 2. Alternativně je možné po ruční installaci potřebných balíků spustit samostatný skript pomocí: (z kořenové složky)
-
+    ```
     python -m getctstream
-
+    ```
+    
 3. Kodi plugin
 
     Přečti si [Kodi/KODI_README.md](https://github.com/kunesj/kodi-plugin.video.streamct/blob/master/Kodi/KODI_README.md)
@@ -51,5 +53,6 @@ Build pluginy atd.
 
 1. Kodi plugin
 
+    ```
     make build_kodi
-
+    ```
