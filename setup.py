@@ -17,7 +17,7 @@ setup(name='getctstream',
         include_package_data = True,
         license = "GPL3",
         entry_points = {
-        'console_scripts': ['getctstream = getctstream.get_ct_stream:main']
+        'console_scripts': ['getctstream = getctstream.cli_interface:main']
         },
         install_requires = [
           'setuptools',

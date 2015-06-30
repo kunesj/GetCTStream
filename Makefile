@@ -13,7 +13,7 @@ install: clean
 
 install_dep_debian:
 	sudo apt-get install python python-pip
-	sudo pip install requests beautifulsoup4
+	sudo pip install requests beautifulsoup
 
 build_kodi: clean
 	rm -f *kodi.zip
