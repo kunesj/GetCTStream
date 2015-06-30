@@ -9,7 +9,7 @@ def log(msg, level=xbmc.LOGNOTICE):
     msg = "plugin.video.streamct: "+msg
     xbmc.log(msg, level)
 
-root = xbmcaddon.Addon(id='plugin.video.streamct').getAddonInfo("path").decode(sys.getfilesystemencoding())
+root = xbmc.translatePath( xbmcaddon.Addon(id='plugin.video.streamct').getAddonInfo("path") )
 background_path = os.path.join(root, 'resources', 'media-overlay.jpg')
 log("background path: "+background_path)
  
