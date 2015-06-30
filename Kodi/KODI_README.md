@@ -2,8 +2,6 @@ plugin.video.streamct
 =====================
 Kodi plugin pro streamovaní živého vysíláni programů České Televize.
 
-!Zatím nefunguje na Androidu!
-
 Instalace
 ---------
 
@@ -17,3 +15,15 @@ Pokud instalace selže:
 Někdy mohou upgrady pluginu potřebovat vyčistit cache: (resetuje nastaveni)
 - Windows: smaž %APPDATA%\kodi\userdata
 - Linux: smaž ~/.kodi/userdata/
+
+Problémy na Androidu
+--------------------
+Zařízení na kterém je Kodi nainstalován nemusí někdy podporovat formát streamu. Projeví se to tím že Kodi po spuštění streamu téměř okamžitě spadne ([Bug #1](https://github.com/kunesj/GetCTStream/issues/1)). Tento problém se dá vyřešit vypnutím hardwarové accelerace v nastavení.
+
+```
+Settings level: Expert
+
+Settings -> Videos -> Acceleration
+MediaCodec: Off
+libstagefright: Off
+```
