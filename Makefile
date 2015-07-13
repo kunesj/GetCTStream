@@ -3,6 +3,8 @@ VERSION=$(shell python -c "import getctstream; print getctstream.__version__")
 help:
 	@echo "To run raw script: \n\tmake run"
 	@echo "To build Kodi plugin: \n\tmake build_kodi"
+	@echo "To install: \n\tmake install"
+	@echo "To install debian dependencies: \n\tmake install_dep_debian"
 	@echo "To clean: \n\tmake clean"
 	
 run:
