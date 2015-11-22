@@ -1,3 +1,6 @@
+[B]v0.2.3[/B]
+- Skip webpage parsing when getting stream url
+
 [B]v0.2.2[/B]
 - Fixed Android playback
 

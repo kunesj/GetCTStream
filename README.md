@@ -22,7 +22,7 @@ Pro použítí parametrů --mpv --mplayer --vlc musí přehrávače spustitelen�
 
 Instalace/Spuštění
 ------------------
-Potřebuje nainstalované Python2 a Python balíky BeautifulSoup a requests
+Potřebuje nainstalované Python2 a Python balík requests
 
 1. Instalace Python balíku (Linux)
 
