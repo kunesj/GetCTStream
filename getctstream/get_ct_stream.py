@@ -5,11 +5,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
-import sys, os
-
 import requests
-from requests import Session
-from BeautifulSoup import BeautifulSoup
 import json
 
 class GetCtStream():
@@ -21,38 +17,14 @@ class GetCtStream():
 
     channels = ['ct1','ct2','ct24','ctsport','ctd','ctart']
 
-    url_ct24 = "http://www.ceskatelevize.cz/ct24/zive-vysilani/"
-    url_ct1 = url_ct24
-    url_ct2 = url_ct24
-    url_ctsport = "http://www.ceskatelevize.cz/sport/zive-vysilani/"
-    url_ctd = url_ct24
-    url_ctart = url_ct24
-    
-    def getFlashPlayerUrl(self, url=None):
-        if url is None:
-            url = self.url_ct24 # Default to CT24 settings
-                    
-        logger.info("requests.get('"+url+"') ...")
-        r = requests.get(url, timeout=30)
-        html = unicode(r.text)
-        soup = BeautifulSoup(html)
-        flashplayer_url = "http://www.ceskatelevize.cz"+soup.body.find('div', 
-            attrs={'id':'programmePlayer'}).find('iframe').get('src')
-        
-        logger.info("flashplayer_url - "+flashplayer_url)
-        return flashplayer_url
-
     def getPlaylistUrl(self, playlist_type = "channel", playlist_id = "24",
                     requestSource="iVysilani", mediatype='flash', 
-                    addCommercials="1", lowQuality=False, 
-                    flashplayer_url=None):
+                    addCommercials="1", lowQuality=False):
         """
         orignal javascript code:
             getPlaylistUrl([{"type":"channel","id":"24"}], requestSource, 'flash', 1);
             var getPlaylistUrl = function(playlist, requestSource, type, addCommercials) { ... }
         """
-        if flashplayer_url is None:
-            flashplayer_url = self.getFlashPlayerUrl()    
         timeout = 4000
         url = "http://www.ceskatelevize.cz/ivysilani/ajax/get-client-playlist"
         
@@ -68,7 +40,7 @@ class GetCtStream():
             data['streamQuality'] = 'nizka'
             
         headers={
-                'Referer': flashplayer_url,
+                'Referer': "http://www.ceskatelevize.cz/ct24#live",
                 'Host': 'www.ceskatelevize.cz',
                 'x-addr': "127.0.0.1"
                 }
@@ -101,38 +73,29 @@ class GetCtStream():
         """
         logger.info("getting stream for channel - "+channel)
         
-        url = ""
-        playlist_id = ""
         # confirmed working playlist ids:
         # 1-6, 24
-        
+        playlist_id = ""
         if channel == "ct1":
             # často může mít přestávku (programy co nemůžou dát do iVysílání)
-            url = self.url_ct1
             playlist_id = "1" 
         elif channel == "ct2":
-            url = self.url_ct2
             playlist_id = "2" 
         elif channel == "ctsport":
             # Občas může mít přestávku
-            url = self.url_ctsport
             playlist_id = "4" 
         elif channel == "ctd":
-            url = self.url_ctd
             playlist_id = "5"
         elif channel == "ctart":
-            url = self.url_ctart
             playlist_id = "6" #TODO - test jestli nekdy skonci prestavka
         else: # channel == "ct24"
-            url = self.url_ct24
             playlist_id = "24" 
             # playlist_id = "3" also works
         
-        flashplayer_url = self.getFlashPlayerUrl(url)
         playlist_url = self.getPlaylistUrl(
             playlist_type = "channel", playlist_id = playlist_id,
             requestSource="iVysilani", mediatype='flash', addCommercials="1", 
-            lowQuality=False, flashplayer_url=flashplayer_url
+            lowQuality=False
             )
         stream_url = self.getStreamUrl(playlist_url)
         
