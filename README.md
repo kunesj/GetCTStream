@@ -1,5 +1,6 @@
 GetCTStream
 ===========
+[![Code Climate](https://codeclimate.com/github/kunesj/GetCTStream/badges/gpa.svg)](https://codeclimate.com/github/kunesj/GetCTStream)
 
 Python script pro získání streamů živého vysíláni programů České Televize. Také obsahuje plugin do přehrávače Kodi.
 
