@@ -1,5 +1,5 @@
-#!/usr/bin/python2
-# coding: utf-8
+#!/usr/bin/env python3
+# encoding: utf-8
 # License: GPL 3
 
 import logging
@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 import argparse
 import subprocess
 
-from get_ct_stream import GetCtStream
+from getctstream.get_ct_stream import GetCtStream
 
 def ChannelName(v):
     """
@@ -64,11 +64,11 @@ def main():
         default=None,
         help='Otevři stream ve zvoleném přehrávači.')
     args = parser.parse_args()
-    
+
     logging.basicConfig()
     logger = logging.getLogger()
-    
-    logger.setLevel(logging.WARNING)  
+
+    logger.setLevel(logging.WARNING)
     if args.debug:
         logger.setLevel(logging.DEBUG)
     elif args.info:
@@ -77,12 +77,12 @@ def main():
     gcts = GetCtStream()
     stream_url = gcts.getChannelStream(args.kanal)
     stream_url_quality = gcts.selectStreamQuality(stream_url, qualityid=args.qualityid)
-    
+
     if not args.disableprint:
-        print "Kanal: "+args.kanal
-        print "Stream url: "+stream_url
-        print "Selected stream quality url: "+stream_url_quality
-    
+        print("Kanal: %s" % (args.kanal,))
+        print("Stream url: %s" % (stream_url,))
+        print("Selected stream quality url: %s" % (stream_url_quality,))
+
     if args.playerpath is not None:
         subprocess.call([args.playerpath, stream_url_quality])
     elif args.mpv:
@@ -91,6 +91,6 @@ def main():
         subprocess.call(["mplayer", stream_url_quality])
     elif args.vlc:
         subprocess.call(["vlc", stream_url_quality])
-        
+
 if __name__ == '__main__':
     main()

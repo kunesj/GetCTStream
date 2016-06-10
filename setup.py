@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 from setuptools import setup
@@ -21,7 +21,6 @@ setup(name='getctstream',
         },
         install_requires = [
           'setuptools',
-          'beautifulsoup',
           'requests'
         ],
     )
