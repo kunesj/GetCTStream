@@ -5,6 +5,8 @@
 import logging
 logger = logging.getLogger(__name__)
 
+import sys
+
 import requests
 import json
 
@@ -17,39 +19,62 @@ class GetCtStream():
 
     channels = ['ct1','ct2','ct24','ctsport','ctd','ctart']
 
-    def getPlaylistUrl(self, playlist_type = "channel", playlist_id = "24",
-                    requestSource="iVysilani", mediatype='flash',
-                    addCommercials="1", lowQuality=False):
+    def getPlaylistUrl(self, playlist_id = "24", addCommercials=None):
         """
-        orignal javascript code:
-            getPlaylistUrl([{"type":"channel","id":"24"}], requestSource, 'flash', 1);
-            var getPlaylistUrl = function(playlist, requestSource, type, addCommercials) { ... }
-        """
-        timeout = 4000
-        url = "http://www.ceskatelevize.cz/ivysilani/ajax/get-client-playlist"
+        Important javascript code is in getPlaylistUrl() function.
+            - info located inline and in ajax-playlist-o2v2.js
+            - has more optional parameters than are implemented
 
+        ---WORKING PACKET FORMAT---
+        POST https://www.ceskatelevize.cz/ivysilani/ajax/get-client-playlist/
+
+        Headers:
+            Host: www.ceskatelevize.cz
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0
+            Accept: */*
+            Accept-Language: cs,en-US;q=0.7,en;q=0.3
+            Accept-Encoding: gzip, deflate, br
+            Referer: https://www.ceskatelevize.cz/ivysilani/embed/iFramePlayer.php?skinID=3&videoID=CT24&tpl=live&multimedia=1&width=100%25&hash=abcfaa44d0a903e6abe4117b318184a8de30653b
+            Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+            x-addr: 127.0.0.1
+            X-Requested-With: XMLHttpRequest
+            Content-Length: 145
+            DNT: 1
+            Connection: keep-alive
+
+        Body:
+            playlist%5B0%5D%5Btype%5D=channel&playlist%5B0%5D%5Bid%5D=24&requestUrl=%2Fivysilani%2Fembed%2FiFramePlayer.php&requestSource=iVysilani&type=html
+        """
         data = {
-            'playlist[0][type]': playlist_type,
-            'playlist[0][id]': playlist_id,
-            'requestUrl': "/ivysilani/embed/iFramePlayerCT24.php",
-            'requestSource': requestSource,
-            'addCommercials': addCommercials,
-            'type': mediatype
-            }
-        if lowQuality:
-            data['streamQuality'] = 'nizka'
+            "playlist[0][type]": "channel",
+            "playlist[0][id]": playlist_id,
+            "requestUrl": "/ivysilani/embed/iFramePlayer.php",
+            "requestSource": "iVysilani",
+            "type": "html",
+        }
+        if addCommercials is not None:
+            data["addCommercials"] = addCommercials
+        logger.debug(data)
 
         headers={
-                'Referer': "http://www.ceskatelevize.cz/ct24#live",
-                'Host': 'www.ceskatelevize.cz',
-                'x-addr': "127.0.0.1"
-                }
+            "Host": "www.ceskatelevize.cz",
+            "Referer": "https://www.ceskatelevize.cz/ivysilani/embed/iFramePlayer.php",
+            "x-addr": "127.0.0.1", # only this is definitely required
+            }
+        logger.debug(headers)
 
         logger.info("requests.post(...), getting playlist url...")
-        r = requests.post(url, timeout=timeout, data=data, headers=headers)
+        r = requests.post(
+            "https://www.ceskatelevize.cz/ivysilani/ajax/get-client-playlist/",
+            timeout=4000, data=data, headers=headers
+            )
 
         logger.info("got playlist url, parsing...")
         purl = json.loads(r.text)['url']
+
+        if purl.lower().strip() == "error":
+            logger.error("Failed to get playlist url!!!")
+            sys.exit(1)
 
         logger.info("playlist_url - "+purl)
         return purl
@@ -92,11 +117,7 @@ class GetCtStream():
             playlist_id = "24"
             # playlist_id = "3" also works
 
-        playlist_url = self.getPlaylistUrl(
-            playlist_type = "channel", playlist_id = playlist_id,
-            requestSource="iVysilani", mediatype='flash', addCommercials="1",
-            lowQuality=False
-            )
+        playlist_url = self.getPlaylistUrl(playlist_id = playlist_id)
         stream_url = self.getStreamUrl(playlist_url)
 
         return stream_url

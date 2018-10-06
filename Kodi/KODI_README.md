@@ -2,6 +2,8 @@ plugin.video.streamct
 =====================
 Kodi plugin pro streamovaní živého vysíláni programů České Televize.
 
+VAROVÁNÍ: Kodi plugin ještě nebyl vyzkoušen/aktualizován na nejnovější verzy! Nemusí fungovat.
+
 Instalace
 ---------
 

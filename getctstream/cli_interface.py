@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 import argparse
 import subprocess
 
-from getctstream.get_ct_stream import GetCtStream
+from .get_ct_stream import GetCtStream
 
 def ChannelName(v):
     """
